@@ -1,5 +1,6 @@
 # Guido van Rossum <guido@python.org>
 
+
 def step2_umbrella():
     s = '\N{Droplet}'
     img = f"""   
@@ -36,8 +37,8 @@ def step2_umbrella():
                   `.`.<
                     `-'  
     """
-    print(img)
-    return 
+    print(img) 
+
 
 def step2_no_umbrella():
     s = '\N{Droplet}'
@@ -63,8 +64,8 @@ def step2_no_umbrella():
                    `.`.<
                      `-`
     """
-    print(img)
-    return 
+    print(img) 
+
 
 def step1():
     print(
@@ -80,6 +81,7 @@ def step1():
     if options[option]:
         return step2_umbrella()
     return step2_no_umbrella()
+
 
 if __name__ == '__main__':
     step1()
