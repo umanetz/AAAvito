@@ -1,6 +1,7 @@
 import os
 import csv
 from collections import defaultdict
+from typing import Tuple
 
 
 ARGS = {
@@ -167,7 +168,7 @@ def stop() -> bool:
             return False
 
 
-def main(args):
+def main(args: dict) -> None:
     finish = False
     department_info = defaultdict(dict)
     department_teams = defaultdict(dict)
