@@ -1,6 +1,6 @@
+import os
 import csv
 from collections import defaultdict
-import os
 
 
 ARGS = {
