@@ -1,7 +1,6 @@
 import os
 import csv
 from collections import defaultdict
-from typing import Tuple
 
 
 ARGS = {
