@@ -67,7 +67,7 @@ def update_department_info(department_info: dict, department_teams: dict, person
     department_info[department]['max_salary'] = get_max_salary(department_info, department, salary)    
     department_teams[department][team] = add_team_to_depart(department_teams, department, team)
     
-    return department_info, department_teams
+    return [department_info, department_teams]
     
     
 def display_department_teams(department_teams: dict) -> None:
