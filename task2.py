@@ -10,7 +10,7 @@ ARGS = {
 
 
 def add_team_to_depart(department_teams: dict, department: str, team: str) -> int:
-    """величиваем на 1 количество сотрудников в команде team, принадлежащей департаменту department"""
+    """увеличиваем на 1 количество сотрудников в команде team, принадлежащей департаменту department"""
 
     if team not in department_teams[department]:
         return 1
@@ -64,7 +64,8 @@ def update_department_info(department_info: dict, department_teams: dict, person
     department_info[department]['number'] = get_department_number(department_info, department)
     department_info[department]['total_salary'] = get_total_salary(department_info, department, salary)
     department_info[department]['min_salary'] = get_min_salary(department_info, department, salary)
-    department_info[department]['max_salary'] = get_max_salary(department_info, department, salary)    
+    department_info[department]['max_salary'] = get_max_salary(department_info, department, salary)   
+    department_info[department]['mean_salary'] = get_mean_salary(department_info, department)    
     department_teams[department][team] = add_team_to_depart(department_teams, department, team)
     
     return [department_info, department_teams]
@@ -177,9 +178,6 @@ def main(args: dict) -> None:
 
         for person_details in reader:
             department_info, department_teams = update_department_info(department_info, department_teams, person_details)
-
-    for department in department_info:
-        department_info[department]['mean_salary'] = get_mean_salary(department_info, department)
 
     while not finish:
         action = choose_option()
