@@ -71,7 +71,7 @@ def update_department_info(department_info: dict, department_teams: dict, person
     return [department_info, department_teams]
     
     
-def display_department_teams(department_teams: dict) -> None:
+def display_department_teams(department_teams: dict, **kwargs) -> None:
     """Выводим информацию о командах внутри департамента.
     Департаменты сортируем по алфавиту.
     Команды сортируем по размеру (по убыванию)."""
@@ -84,7 +84,7 @@ def display_department_teams(department_teams: dict) -> None:
         print()
 
 
-def display_department_info(department_info: dict) -> None:
+def display_department_info(department_info: dict, **kwargs) -> None:
     """Выводим информацию по департаментам"""
     
     print('\nИнформация по департаментам:')
@@ -126,7 +126,7 @@ def get_save_path(save_path: str) -> str:
     return os.path.join(save_path, 'out.csv')
     
 
-def save_department_info(department_info: dict, save_path: str) -> str:
+def save_department_info(department_info: dict, save_path: str, **kwargs) -> str:
     """Сохраняем информацию по департаментам в save_path"""
 
     header = ['id', 'department', 'number', 'min_salary', 'max_salary', 'mean_salary']
@@ -159,25 +159,31 @@ def stop() -> bool:
     """Останавливаемся или продолжаем выбор из 3х опций"""
 
     finish = ''
-    while finish not in ('yes', 'no'):
-        print('Завершить (yes == пустая строка / no)?')
+    while finish not in ('y', 'n'):
+        print('Завершить: y/n?')
         finish = input()
-        if finish in ('yes', ''):
+        if finish in ('y', ''):
             return True
-        elif finish == 'no':
+        elif finish == 'n':
             return False
 
 
-def main(args: dict) -> None:
-    finish = False
+def read_and_process_data(file_path: str) -> list([dict, dict]):
     department_info = defaultdict(dict)
     department_teams = defaultdict(dict)
-    
-    with open(args['file_path']) as csvfile:
+
+    with open(file_path) as csvfile:
         reader = csv.DictReader(csvfile, delimiter=';')
 
         for person_details in reader:
             department_info, department_teams = update_department_info(department_info, department_teams, person_details)
+    
+    return [department_info, department_teams]
+
+
+def main(args: dict) -> None:
+    finish = False
+    department_info, department_teams = read_and_process_data(args['file_path'])
 
     while not finish:
         action = choose_option()
