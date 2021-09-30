@@ -4,7 +4,6 @@ from collections import defaultdict
 import math 
 
 
-
 ARGS = {
     'file_path': 'Corp_Summary.csv',
     'save_path': './'
