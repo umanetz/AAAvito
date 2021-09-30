@@ -112,7 +112,7 @@ def stop() -> bool:
             return False
 
 
-def read_and_process_data(file_path: str) -> tuple([dict, dict]):
+def read_and_process_data(file_path: str) -> tuple([list, list]):
     department_info = defaultdict(lambda: defaultdict(number=0,  max_salary=0., total_salary=0., min_salary=math.inf))
     department_teams = defaultdict(lambda: defaultdict(int))
 
