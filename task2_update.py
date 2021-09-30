@@ -1,6 +1,8 @@
 import os
 import csv
 from collections import defaultdict
+import math 
+
 
 
 ARGS = {
@@ -8,24 +10,6 @@ ARGS = {
     'save_path': './'
 }
 
-
-def add_team_to_depart(department_teams: dict, department: str, team: str) -> int:
-    """увеличиваем на 1 количество сотрудников в команде team, принадлежащей департаменту department"""
-
-    if team not in department_teams[department]:
-        return 1
-    else:
-        return department_teams[department][team] +  1
-
-
-def get_min_salary(department_info: dict, department: str, salary: float) -> float:
-    """Считаем минимальную зп"""
-
-    if 'min_salary' not in department_info[department]:
-        return salary
-    else:
-        return min(department_info[department]['min_salary'], salary)
-        
 
 def sort_department_by_alphabit(department_dict: dict) -> list:
     return list(sorted(department_dict.items(), key=lambda item: item[0]))
@@ -130,8 +114,8 @@ def stop() -> bool:
 
 
 def read_and_process_data(file_path: str) -> tuple([dict, dict]):
-    department_info = defaultdict(dict)
-    department_teams = defaultdict(dict)
+    department_info = defaultdict(lambda: defaultdict(number=0,  max_salary=0., total_salary=0., min_salary=math.inf))
+    department_teams = defaultdict(lambda: defaultdict(int))
 
     with open(file_path) as csvfile:
         reader = csv.DictReader(csvfile, delimiter=';')
@@ -141,15 +125,12 @@ def read_and_process_data(file_path: str) -> tuple([dict, dict]):
             salary = float(person_details['Оклад'])
             team = person_details['Отдел']
 
-            if department not in department_info:
-                department_info[department] = defaultdict(number=0,  max_salary=0., total_salary=0.)
-
             department_info[department]['number'] = department_info[department]['number'] + 1
             department_info[department]['total_salary'] = department_info[department]['total_salary'] + salary
-            department_info[department]['min_salary'] = get_min_salary(department_info, department, salary)
-            department_info[department]['max_salary'] =  max(department_info[department]['min_salary'], salary)   
+            department_info[department]['min_salary'] = min(department_info[department]['min_salary'], salary) 
+            department_info[department]['max_salary'] =  max(department_info[department]['max_salary'], salary)   
             department_info[department]['mean_salary'] = department_info[department]['total_salary'] / department_info[department]['number']
-            department_teams[department][team] = add_team_to_depart(department_teams, department, team)
+            department_teams[department][team] = department_teams[department][team] + 1
 
     department_info = sort_department_by_alphabit(department_info)
     department_teams = sort_department_by_alphabit(department_teams)
