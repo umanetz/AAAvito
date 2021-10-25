@@ -8,7 +8,7 @@ class CountVectorizer:
 
 
     def count_vocab_(self, raw_documents: list) -> list:
-        "Create counter of tokens for each document"
+        """Create counter of tokens for each document"""
         self.vocabulary = dict()
         self.inverse_vocabulary = dict()
         vocabulary_count = 0
@@ -18,14 +18,12 @@ class CountVectorizer:
                 feature_counter = {}
 
                 for feature in self.check_split_doc(doc):
-
                         if feature not in self.vocabulary:
                             self.vocabulary[feature] = vocabulary_count
                             self.inverse_vocabulary[vocabulary_count] = feature
                             vocabulary_count += 1
                         
                         feature_idx = self.vocabulary[feature]
-
                         if feature_idx not in feature_counter:
                             feature_counter[feature_idx] = 1
                         else:
@@ -37,7 +35,7 @@ class CountVectorizer:
                     
 
     def build_matrix(self, documents_counter: dict) -> list:
-        "Create matrix of token count"
+        """Create matrix of token count"""
         whidth = len(self.vocabulary)
         matrix = []
 
@@ -60,7 +58,7 @@ class CountVectorizer:
 
 
     def check_vocabulary_(self) -> None:
-        """Check if vocabulary is empty or  not fitted"""
+        """Check if vocabulary is empty or not fitted"""
         if self.vocabulary is None:
             raise ValueError("Vocabulary  not fitted")
 
@@ -68,25 +66,24 @@ class CountVectorizer:
             raise ValueError("Vocabulary is empty")
 
 
-    def check_corpus(self, corpus) -> None:
-        "check that corpus is list"
-        if not isinstance(corpus, Iterable):
-            raise TypeError(f"Corpus is not Iterable")
+    def check_corpus(self, corpus: list) -> None:
+        """Check that corpus is list"""
+        if not isinstance(corpus, list):
+            raise TypeError(f"Corpus is not list")
 
 
-    def fit_transform(self, corpus: list) -> list:
-            """Check doc is str
-            raw_documents : iterable
-                A list which generates  str
+    def fit_transform(self, raw_documents: list) -> list:
+            """Fit and transform raw_documents
+            raw_documents : list
             """
-            self.check_corpus(corpus)
-            documents_counter = self.count_vocab_(corpus)
+            self.check_corpus(raw_documents)
+            documents_counter = self.count_vocab_(raw_documents)
             X = self.build_matrix(documents_counter)
             return X
 
 
     def get_feature_names(self) -> list:
-        """extract vocabulary"""
+        """Extract features"""
         self.check_vocabulary_()
         return [t for t, _ in sorted(self.vocabulary.items(), key = itemgetter(1))]
 
