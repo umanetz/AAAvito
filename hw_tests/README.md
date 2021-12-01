@@ -27,3 +27,5 @@ Task05
 ```python3 -m  pip install pytest-cov```
 
 ```python3 -m pytest -v --cov-report=html:task5/htmlcov --cov=task5 task5/ >task5/result.txt```
+
+Результаты работы -cov находятся в task5/htmlcov
