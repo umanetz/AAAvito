@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.9.4, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- /usr/local/opt/python@3.9/bin/python3.9
+cachedir: .pytest_cache
+rootdir: /Users/kate/Documents/YEE/AAA/python/hw_tests
+plugins: cov-3.0.0
+collecting ... collected 5 items
+
+task5/test_data.py::test_first_type PASSED                               [ 20%]
+task5/test_data.py::test_second_type PASSED                              [ 40%]
+task5/test_data.py::test_wrong_format1 PASSED                            [ 60%]
+task5/test_data.py::test_wrong_format2 PASSED                            [ 80%]
+task5/test_data.py::test_wrong_format3 PASSED                            [100%]
+
+---------- coverage: platform darwin, python 3.9.4-final-0 -----------
+Coverage HTML written to dir task5/htmlcov
+
+
+============================== 5 passed in 0.19s ===============================

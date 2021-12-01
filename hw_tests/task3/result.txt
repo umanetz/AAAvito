@@ -1,0 +1,9 @@
+test_excep (__main__.TestTf) ... ok
+test_ohe_eq1 (__main__.TestTf) ... ok
+test_ohe_eq2 (__main__.TestTf) ... ok
+test_ohe_notNone (__main__.TestTf) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

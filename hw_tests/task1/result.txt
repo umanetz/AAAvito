@@ -1,0 +1,39 @@
+Trying:
+    test_morse('MAI-PYTHON-2019')
+Expecting:
+    '-- .- .. -....- .--. -.-- - .... --- -. -....- ..--- ----- .---- ----.'
+ok
+Trying:
+    test_morse('HELLO-WORLD')
+Expecting:
+    '.... . .-.. .-.. --- -....- .-- --- .-. .-.. -..'
+ok
+Trying:
+    test_morse('SOS')
+Expecting:
+    '... --- ...'
+ok
+Trying:
+    test_morse('????????????')
+Expecting:
+    '..--.. ... ..--..'
+ok
+Trying:
+    test_morse('NASA') # doctest: -ELLIPSIS
+Expecting:
+    '-. .- ... .-'
+ok
+Trying:
+    test_morse(3)
+Expecting:
+    Traceback (most recent call last):
+        ...
+    TypeError: Only string is available
+ok
+1 items had no tests:
+    test_morse
+1 items passed all tests:
+   6 tests in test_morse.test_morse
+6 tests in 2 items.
+6 passed and 0 failed.
+Test passed.
