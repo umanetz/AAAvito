@@ -6,18 +6,18 @@ def test_morse(string):
     """
     >>> test_morse('SOS')
     '... --- ...'
+
     >>> test_morse('????????????') # doctest: +ELLIPSIS
     '..--.. ... ..--..'
+
     >>> test_morse('sos')
     Traceback (most recent call last):
     KeyError: 's'
+
     >>> test_morse(3)
     Traceback (most recent call last):
-    TypeError: Only string is available
+    TypeError: 'int' object is not iterable
     """
-
-    if not isinstance(string, str):
-        raise TypeError("Only string is available")
 
     return encode(string)
 

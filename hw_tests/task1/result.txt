@@ -18,7 +18,7 @@ Trying:
     test_morse(3)
 Expecting:
     Traceback (most recent call last):
-    TypeError: Only string is available
+    TypeError: 'int' object is not iterable
 ok
 1 items had no tests:
     test_morse
