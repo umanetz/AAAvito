@@ -4,19 +4,15 @@ from task1.morse import encode
 
 def test_morse(string):
     """
-    >>> test_morse('MAI-PYTHON-2019')
-    '-- .- .. -....- .--. -.-- - .... --- -. -....- ..--- ----- .---- ----.'
-    >>> test_morse('HELLO-WORLD')
-    '.... . .-.. .-.. --- -....- .-- --- .-. .-.. -..'
     >>> test_morse('SOS')
     '... --- ...'
-    >>> test_morse('????????????')
+    >>> test_morse('????????????') # doctest: +ELLIPSIS
     '..--.. ... ..--..'
-    >>> test_morse('NASA') # doctest: -ELLIPSIS
-    '-. .- ... .-'
+    >>> test_morse('sos')
+    Traceback (most recent call last):
+    KeyError: 's'
     >>> test_morse(3)
     Traceback (most recent call last):
-        ...
     TypeError: Only string is available
     """
 
@@ -27,4 +23,4 @@ def test_morse(string):
 
 
 if __name__ == '__main__':
-    doctest.testmod(optionflags=doctest.ELLIPSIS)
+    doctest.testmod(optionflags=doctest.IGNORE_EXCEPTION_DETAIL)
