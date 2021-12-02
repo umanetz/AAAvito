@@ -2,7 +2,7 @@
 
 Task01
 
-```python3 -m doctest -v -o ELLIPSIS task1/test_morse.py >task1/result.txt```
+```python3 -m doctest -v -o IGNORE_EXCEPTION_DETAIL task1/test_morse.py >task1/result.txt```
 
 Task02
 
